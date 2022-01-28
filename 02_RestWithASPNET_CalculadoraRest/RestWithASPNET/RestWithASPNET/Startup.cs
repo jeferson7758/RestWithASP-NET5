@@ -1,21 +1,15 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using RestWithASPNET.Model;
+using RestWithASPNET.Business;
+using RestWithASPNET.Business.Implementations;
 using RestWithASPNET.Model.Context;
-using RestWithASPNET.Service;
-using RestWithASPNET.Service.Implementations;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using RestWithASPNET.Repository;
+using RestWithASPNET.Repository.Implementations;
 
 namespace RestWithASPNET
 {
@@ -40,8 +34,9 @@ namespace RestWithASPNET
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "RestWithASPNET", Version = "v1" });
             });
-            
-            services.AddScoped<IPersonService, PersonServiceImplementation>();  
+
+            services.AddScoped<IPersonBusiness, PersonBusinessImplementation>();
+            services.AddScoped<IPersonRepository, PersonRepositoryImplementation>();  
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
