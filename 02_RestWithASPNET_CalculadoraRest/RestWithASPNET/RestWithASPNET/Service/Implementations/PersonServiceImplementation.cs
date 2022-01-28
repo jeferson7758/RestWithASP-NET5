@@ -24,7 +24,7 @@ namespace RestWithASPNET.Service.Implementations
                 _context.Add(person);
                 _context.SaveChanges();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
                 throw;
@@ -43,7 +43,7 @@ namespace RestWithASPNET.Service.Implementations
                     _context.Persons.Remove(result);
                     _context.SaveChanges();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
                     throw;
                 }
@@ -85,7 +85,7 @@ namespace RestWithASPNET.Service.Implementations
                     _context.Entry(result).CurrentValues.SetValues(person);
                     _context.SaveChanges();
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
 
                     throw;
