@@ -10,6 +10,7 @@ using RestWithASPNET.Business;
 using RestWithASPNET.Business.Implementations;
 using RestWithASPNET.Model.Context;
 using RestWithASPNET.Repository;
+using RestWithASPNET.Repository.Generic;
 using RestWithASPNET.Repository.Implementations;
 using Serilog;
 using System;
@@ -55,10 +56,9 @@ namespace RestWithASPNET
             });
 
             services.AddScoped<IPersonBusiness, PersonBusinessImplementation>();
-            services.AddScoped<IPersonRepository, PersonRepositoryImplementation>();
-
+           // services.AddScoped<IPersonRepository, PersonRepositoryImplementation>();
             services.AddScoped<IBookBusiness, BookBusinessImplementation>();
-            services.AddScoped<IBookRepository, BookRepositoryImplementation>();
+            services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
         }
 
 
